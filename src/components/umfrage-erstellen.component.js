@@ -26,31 +26,26 @@ const UmfrageErstellen = () => {
     return (
         <Fragment>
             <h1>Umfrage erstellen</h1>
-            <div><button onClick={e => document.getElementById('modal').style.display='block'}>click</button></div>
             {umfrageName}
-            <div id="modal" className="w3-modal">
-                <div className="w3-modal-content">
-                    <div className="w3-container">
-                    <span onClick={e => document.getElementById('modal').style.display='none'}
-                    className="w3-button w3-display-topright">&times;</span>
-                    <form onSubmit={onSubmit}>
-                        <label>Geben Sie einen Namen für die Umfrage ein:  </label>
-                        <input 
-                        type="text"
-                        name="umfrageName"
-                        onChange={e => setUmfrageName(e.target.value)}
-                        value={umfrageName}>
-                        </input>
-                    </form>
-                    </div>
-                </div>
+            <div className="grid-item">
+                <h2>Eingabe</h2>
+            <div className="container">
+                <form onSubmit={onSubmit}>
+                    <label>Geben Sie einen Namen für die Umfrage ein:  </label>
+                    <input 
+                    type="text"
+                    name="umfrageName"
+                    onChange={e => setUmfrageName(e.target.value)}
+                    value={umfrageName}>
+                    </input>
+                </form>
             </div>
-            <div id="fragen">
+            <div className="container">
                 {fragen.map((item) => 
                     <p key={fragen.indexOf(item)}>{fragen.indexOf(item) + 1}. {item}</p>
                 )}
             </div>
-            <div>
+            <div className="container">
                 <p>Fragen erstellen:</p>
                 <form onSubmit={submitFrage}>
                     <input
@@ -60,6 +55,10 @@ const UmfrageErstellen = () => {
                     value={inputFrage}>
                     </input>
                 </form>
+            </div>
+            </div>
+            <div className="grid-item">
+                <h2>Vorschau</h2>
             </div>
             <button className="w3-button" onClick={submitUmfrage}>erstellen</button>
         </Fragment>

@@ -3,7 +3,9 @@ import React, { Fragment } from 'react';
 const Index = () => {
     return (
         <Fragment>
-            <p>Erstellen Sie mit dieser App Ihre Umfrage und werten Sie sie aus.</p>
+            <div className="centered">
+                Erstellen Sie mit dieser App Ihre Umfrage und werten Sie sie aus.
+            </div>
         </Fragment>
     )
 }
