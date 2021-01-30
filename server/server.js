@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const helmet = require('helmet');
 const UmfrageRoute = require('./routes/umfrage-route');
 
 const PORT = process.env.PORT || 4000;
@@ -21,8 +20,7 @@ mongoose.connect(keys.mongoURI, {
 const app = express();
 
 app.use(cors());
-app.use(helmet());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded());
 app.use(express.json());
 app.use('/umfrage', UmfrageRoute);
 
