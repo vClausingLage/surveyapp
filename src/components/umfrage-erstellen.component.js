@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 
-const UmfrageErstellen = () => {
+const UmfrageErstellen = ( params ) => {
     const [umfrageName, setUmfrageName] = useState('');
     const [inputFrage, setInputFrage] = useState('');
     const [inputOption, setInputOption] = useState('');
@@ -29,9 +29,9 @@ const UmfrageErstellen = () => {
 
     function submitUmfrage(e){
         e.preventDefault();
-        const obj = {name: umfrageName, fragen: fragen};
+        const obj = {name: umfrageName, fragen: fragen, optionen: optionen};
         axios.post('http://localhost:4000/umfrage/create', obj)
-            .then(res => {console.log(res.data); setFragen([])});
+            .then(res => {console.log(res.data); setFragen([]); setOptionen([]); params.setShow(false)});
     }
 
     const THead = () => {
@@ -100,7 +100,7 @@ const UmfrageErstellen = () => {
             </div>
             </div>
             </div>
-            <button className="w3-button" onClick={submitUmfrage}>erstellen</button>
+            <button className="" onClick={submitUmfrage}>erstellen</button>
         </Fragment>
     )
 }

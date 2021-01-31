@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Fragment>
         <div className="panel">
-        <p>&copy; 2020 clausing-lage</p>
+        <p>&copy; 2021 clausing-lage</p>
         </div>
     </Fragment>
   );
