@@ -7,7 +7,7 @@ const Umfragen = () => {
     return (
         <Fragment>
             {show && <UmfrageErstellen setShow={setShow} />}
-            {!show && <UmfragenVorstellen />}
+            {show && <UmfragenVorstellen />}
         </Fragment>
     )
 }
