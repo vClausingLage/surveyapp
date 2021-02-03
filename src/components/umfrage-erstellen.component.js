@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 
-const UmfrageErstellen = ( params ) => {
+const UmfrageErstellen = () => {
     const [umfrageName, setUmfrageName] = useState('');
     const [inputFrage, setInputFrage] = useState('');
     const [inputOption, setInputOption] = useState('');
@@ -31,7 +31,7 @@ const UmfrageErstellen = ( params ) => {
         e.preventDefault();
         const obj = {name: umfrageName, fragen: fragen, optionen: optionen};
         axios.post('http://localhost:4000/umfrage/create', obj)
-            .then(res => {console.log(res.data); setFragen([]); setOptionen([]); params.setShow(false)});
+            .then(res => {console.log(res.data); setFragen([]); setOptionen([])});
     }
 
     const THead = () => {
@@ -100,7 +100,7 @@ const UmfrageErstellen = ( params ) => {
             </div>
             </div>
             </div>
-            <button className="" onClick={submitUmfrage}>erstellen</button>
+            <button className="button" onClick={submitUmfrage}>erstellen</button>
         </Fragment>
     )
 }

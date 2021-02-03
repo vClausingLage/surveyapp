@@ -8,14 +8,26 @@
 }
 
 button {
-    appearance:none;
-    -webkit-appearance:none;
     padding:.3rem;
     border:none;
-    background-color: red;
+    background-color: #8eacbc;
     color:#fff;
     font-weight: bold;
     border-radius:.3rem;
+}
+button:hover {
+    background-color: #e2f1f8;
+}
+
+.navButton {
+    text-decoration: none;
+    padding:.3rem;
+    border:none;
+    background-color: #8eacbc;
+    color:#fff;
+    font-weight: bold;
+    border-radius:.3rem;
+    margin: .4rem;
 }
 
 .panel {
