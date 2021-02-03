@@ -88,3 +88,9 @@ table > tbody > tr > td:nth-child(1) {
     padding-right: 2rem;
     text-align: center;
 }
+
+.trash {
+    color:  #940d55;
+    background-color: white;
+    border: solid 1px #940d55;
+}

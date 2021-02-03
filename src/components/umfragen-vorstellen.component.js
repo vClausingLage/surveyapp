@@ -29,7 +29,7 @@ const UmfragenVorstellen = () => {
             <table>
             <tbody>
             {umfragen.map(umfrage => (
-                    <tr key={umfragen.indexOf(umfrage)}><td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td><td><button onClick={e => deleteUmfrage(umfrage._id)}><FontAwesomeIcon icon={faTrash} /></button></td></tr>
+                    <tr key={umfragen.indexOf(umfrage)}><td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td><td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash"><FontAwesomeIcon icon={faTrash} /></button></td></tr>
             ))}
             </tbody>
             </table>
