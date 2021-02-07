@@ -1,10 +1,16 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const DatenEingeben = () => {
     const [fragen, setFragen] = useState([]);
     const [optionen, setOptionen] = useState([]);
+
+    const history = useHistory();
+    const routeChange = () =>{ 
+        let path = '/umfragen/fire/' + id; 
+        history.push(path);
+    }
 
     const { id } = useParams();
 
@@ -17,6 +23,10 @@ const DatenEingeben = () => {
         fetchData();
     },[]);
 
+    function publish(id){
+        routeChange();
+    }
+
     return (
         <Fragment>
         <h1>{fragen.name}</h1>
@@ -28,8 +38,8 @@ const DatenEingeben = () => {
                 </tbody>
                 </table>
             </div>
-        <h2>hau raus</h2>
-        {id}
+        <button onClick={e => publish(id)}>Umfrage veröffentlichen</button>
+        
         </Fragment>
     )
 }
