@@ -6,6 +6,7 @@ import Footer from './components/footer.component';
 import Umfragen from './components/umfragen.component';
 import UmfragenVorstellen from './components/umfragen-vorstellen.component';
 import UmfrageAnzeigen from './components/umfrage-anzeigen.component';
+import FireUmfrage from './components/fire-umfrage.component';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path='/umfragen' component={ Umfragen } />
           <Route exact path='/umfrage/list/:id' component={ UmfrageAnzeigen } />
           <Route exact path='/umfrage/list' component={ UmfragenVorstellen } />
+          <Route path='/umfragen/fire/:id' component={ FireUmfrage } />
       </Switch>
       </div>
     <Footer />

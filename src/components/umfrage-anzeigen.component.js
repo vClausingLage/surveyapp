@@ -28,6 +28,8 @@ const DatenEingeben = () => {
                 </tbody>
                 </table>
             </div>
+        <h2>hau raus</h2>
+        {id}
         </Fragment>
     )
 }
