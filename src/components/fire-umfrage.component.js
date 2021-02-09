@@ -1,13 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { set } from 'mongoose';
  
 const FireUmfrage = (  ) => {
     const [fragen, setFragen] = useState([]);
     const [optionen, setOptionen] = useState([]);
     const [UName, setUName] = useState('');
-    const [optionIndex, setOptionIndex] = useState([]);
+    const optionIndex = [];
 
     let { id } = useParams();
 
@@ -21,13 +20,15 @@ const FireUmfrage = (  ) => {
         fetchData();
     },[]);
 
-    function submitAll(){
-        console.log()
+    function submitAll(e){
+        e.preventDefault();
+        const obj = optionIndex;
+        axios.post('http://localhost:4000/umfrage/fire/' + id, obj)
+            
     }
 
-    function setInput(element, index){
-        console.log('Option: ' + element + ' Frage: ' + index);
-        setOptionIndex(optionIndex => [...optionIndex, {option: element, frage: index}]);
+    const setInput = (element, index) => {
+        optionIndex[index] = element;
     }
 
     return (
@@ -44,7 +45,7 @@ const FireUmfrage = (  ) => {
                         type="radio"
                         name={frindex}
                         id={element}
-                        onChange={e => setInput(element,index)}
+                        onChange={e => setInput(index,frindex)}
                         />
                     </td>)}
                 </tr>)}
@@ -52,7 +53,7 @@ const FireUmfrage = (  ) => {
                 </tbody>
                 </table>
             </div>
-        <button onClick={submitAll}>absenden</button>
+        <button onClick={e => submitAll(e)}>absenden</button>
         </Fragment>
     )
 }

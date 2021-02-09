@@ -44,6 +44,19 @@ UmfrageRoute.route('/update/:id').post(function (req, res) {
     });
 });
 
+UmfrageRoute.route('/fire/:id').post(function (req, res) {
+    let id = req.params.id;
+    let data = req.body;
+    Umfrage.findByIdAndUpdate(id, { ergebnisse: data }, function(err, result){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(result)
+            res.json(result);
+        }
+    });
+});
+
 UmfrageRoute.route('/delete/:id').get(function(req, res) {
     let id = req.params.id;
     Umfrage.findByIdAndDelete(id, function(err){

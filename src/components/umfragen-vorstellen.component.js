@@ -6,6 +6,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const UmfragenVorstellen = () => {
     const [umfragen, setUmfragen] = useState([]);
+    const [change, setChange] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,13 +14,14 @@ const UmfragenVorstellen = () => {
         setUmfragen(response.data);
         }
         fetchData();
-    },[umfragen]);
+    },[change]);
 
     function deleteUmfrage(id) {
         axios.get('http://localhost:4000/umfrage/delete/' + id)
             .catch(err => console.log(err));
             const tmp = umfragen.filter( u => u.umfragen !== umfragen );
             setUmfragen(tmp);
+            setChange(change + 1);
 
     }
 
@@ -29,7 +31,7 @@ const UmfragenVorstellen = () => {
             <table>
             <tbody>
             {umfragen.map(umfrage => (
-                    <tr key={umfragen.indexOf(umfrage)}><td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td><td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash"><FontAwesomeIcon icon={faTrash} /></button></td></tr>
+                    <tr key={umfragen.indexOf(umfrage)}><td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td><td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash"><FontAwesomeIcon icon={faTrash} /></button></td><td><Link className="navButton" to={'/ergebnisse/' + umfrage._id}>Ergebnisse</Link></td></tr>
             ))}
             </tbody>
             </table>

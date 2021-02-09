@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 const schemaUmfrage = new Schema({
     name: String,
     fragen: Array,
-    optionen: Array
+    optionen: Array,
+    ergebnisse: Array
   });
 
 module.exports = mongoose.model('Umfrage', schemaUmfrage);

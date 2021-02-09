@@ -7,6 +7,7 @@ import Umfragen from './components/umfragen.component';
 import UmfragenVorstellen from './components/umfragen-vorstellen.component';
 import UmfrageAnzeigen from './components/umfrage-anzeigen.component';
 import FireUmfrage from './components/fire-umfrage.component';
+import Ergebnisse from './components/ergebnisse.component';
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path='/umfrage/list/:id' component={ UmfrageAnzeigen } />
           <Route exact path='/umfrage/list' component={ UmfragenVorstellen } />
           <Route path='/umfragen/fire/:id' component={ FireUmfrage } />
+          <Route path='/ergebnisse/:id' component={ Ergebnisse } />
       </Switch>
       </div>
     <Footer />
