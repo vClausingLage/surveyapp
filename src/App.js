@@ -15,8 +15,8 @@ const App = () => {
       <div className="container">
         <nav>
           <Link to={'/'} className="navButton">Home</Link>
-          <Link to={'/umfragen'} className="navButton" >Umfrage</Link>
-          <Link to={'/umfrage/list'} className="navButton">anzeigen</Link>
+          <Link to={'/umfragen'} className="navButton" >neue Umfrage erstellen</Link>
+          <Link to={'/umfrage/list'} className="navButton">Ihre Umfragen</Link>
         </nav>
       <Switch>
           <Route exact path='/' component={ Index } />

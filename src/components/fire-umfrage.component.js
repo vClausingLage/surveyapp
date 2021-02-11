@@ -33,6 +33,7 @@ const FireUmfrage = (  ) => {
 
     return (
         <Fragment>
+        <h3>bitte füllen Sie den Fragebogen aus und senden Sie ihn danach ab</h3>
         <h1>{UName}</h1>
                 <div className="container">
                 <table>
@@ -53,7 +54,7 @@ const FireUmfrage = (  ) => {
                 </tbody>
                 </table>
             </div>
-        <button onClick={e => submitAll(e)}>absenden</button>
+        <button onClick={e => submitAll(e)} style={{margin: 'auto', marginTop: '2rem'}}>absenden</button>
         </Fragment>
     )
 }
