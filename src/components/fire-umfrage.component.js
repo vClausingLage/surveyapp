@@ -29,12 +29,14 @@ const FireUmfrage = (  ) => {
 
     const setInput = (element, index) => {
         optionIndex[index] = element;
+        console.log(optionIndex)
     }
 
     return (
         <Fragment>
         <h3>bitte füllen Sie den Fragebogen aus und senden Sie ihn danach ab</h3>
         <h1>{UName}</h1>
+        <p>{id}</p>
                 <div className="container">
                 <table>
                 <tbody>
@@ -46,7 +48,7 @@ const FireUmfrage = (  ) => {
                         type="radio"
                         name={frindex}
                         id={element}
-                        onChange={e => setInput(index,frindex)}
+                        onChange={e => setInput({frage: frindex, option:index},frindex)}
                         />
                     </td>)}
                 </tr>)}

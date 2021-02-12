@@ -31,6 +31,7 @@ const DatenEingeben = () => {
         <Fragment>
         <h3>überprüfen Sie Ihren Umfragebogen</h3>
         <h1>{fragen.name}</h1>
+        <p>{fragen._id}</p>
                 <div className="container">
                 <table>
                 <tbody>

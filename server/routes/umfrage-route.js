@@ -28,18 +28,22 @@ UmfrageRoute.route('/list').get(function(req, res) {
 UmfrageRoute.route('/list/:id').get(function (req, res) {
     let id = req.params.id;
     Umfrage.findById(id, function (err, umfrage){
+        if(err){
+            console.log(err)
+        } else {
         res.json(umfrage);
+        }
     });
 });
 
 UmfrageRoute.route('/update/:id').post(function (req, res) {
     let id = req.params.id;
     let data = req.body;
-    Umfrage.findByIdAndUpdate(id, { optionen: data }, function(err, result){
+    Umfrage.findByIdAndUpdate(id, { optionen: data }, function(err, success){
         if(err){
             console.log(err);
         } else {
-            res.json(result);
+            console.log(success);
         }
     });
 });
@@ -47,7 +51,7 @@ UmfrageRoute.route('/update/:id').post(function (req, res) {
 UmfrageRoute.route('/fire/:id').post(function (req, res) {
     let id = req.params.id;
     let data = req.body;
-    Umfrage.findOneAndUpdate(
+    Umfrage.findByIdAndUpdate(
         id,
         { $push: { ergebnisse: [data] } },
         function (error, success) {
