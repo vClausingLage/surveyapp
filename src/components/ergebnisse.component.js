@@ -23,13 +23,29 @@ const Ergebnisse = () => {
         fetchData();
     }, [])
 
-    //function collectData(){
+    //let frLength = ergebnisse[0].length;
+    //let optLength = ergebnisse.length;
+    let antworten = [];
+    let list = [];
 
-    //}
+    function count (nF, nO, arr) {
+        for(let j = 0; j < nF; j++) {
+            for(let i = 0; i < nO; i++){
+                antworten = [...antworten, arr[i][j]];
+            }
+        }
+        while(antworten.length>0){
+            list = [...list, antworten.splice(0,3)]
+        }
+    }
+    count(frLength, optLength, ergebnisse)
 
     return (
         <Fragment>
         {ergebnisse.map(item => (
+            <p>{item}</p>
+        ))}
+        {list.map(item => (
             <p>{item}</p>
         ))}
         </Fragment>
