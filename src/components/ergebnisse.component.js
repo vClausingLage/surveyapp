@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { PieChart, Pie, Cell } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 
 const Ergebnisse = () => {
     const [ergebnisse, setErgebnisse] = useState([])
@@ -22,33 +22,24 @@ const Ergebnisse = () => {
             setOptionen(response.data.optionen)
             setFragen(response.data.fragen)
             setLoading(false)
-            createButtons()
+            ergebnisse.splice(0)
         }
         fetchData();
     }, [])
 
-    const createButtons = () => {
-      let n = fragen.length
-      for (let i = 0; i < n; i++) {
-        return (<button onClick={e => counter(n)}>Frage {n}</button>)
-      }
-    }
-
     function counter(index){
-      let count=[]
-      let list = []
+      let count = []
       let sum = []
       let zaehler = 0
       let antwort = []
-      ergebnisse.shift()
       let n = optionen.length
       let m = ergebnisse.length
-      //console.log('Optionen', n, 'Ergebnisse',m)
+      console.log('Optionen', n, 'Ergebnisse',m)
       //console.log('Index',index)
       for (let i = 0; i < m; i++) {
           count = [...count, ergebnisse[i][index]]
       }
-      //console.log('count',count)
+      console.log('count',count)
       for (let j = 0; j < n; j++) {
         for (let k = 0; k < m; k++) {
           zaehler += count[k][j]
@@ -62,9 +53,6 @@ const Ergebnisse = () => {
       }
       setData(antwort)
     }
-
-  
-   
 
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
@@ -81,16 +69,30 @@ const Ergebnisse = () => {
     );
     };
 
+    function CustomTooltip({ payload, label, active }) {
+      if (active) {
+        return (
+          <div className="custom-tooltip">
+            <p className="label">{`${label} : ${payload[0].value}`}</p>
+          </div>
+        );
+      }
+      return null;
+    }
+
     return (
         <Fragment>
-          {createButtons}
         {loading && <p className="centered">loading</p>}
+        <div className="grid">
+        <div className="grid-item">
         {!loading && <div>
         <h1>{UName}</h1>
         {fragen.map((item, index) =>
-          <button key={item} onClick={e => counter(index)}>Frage {index}</button>  
+          <p key={item}><button onClick={e => counter(index)}>{`${fragen[index]}`}</button></p>
         )}
         </div>}
+        </div>
+        <div className="grid-item">
         <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -106,7 +108,10 @@ const Ergebnisse = () => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
+        <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} content={<CustomTooltip  />}/>
         </PieChart>
+        </div>
+        </div>
         </Fragment>
 )}
 
