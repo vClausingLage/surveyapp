@@ -7,6 +7,7 @@ const UmfrageErstellen = () => {
     const [inputOption, setInputOption] = useState('');
     const [optionen, setOptionen] = useState([]);
     const [fragen, setFragen] = useState([]);
+    const [Matrix, setMatrix] = useState([]);
 
     function submitFrage(e){
         e.preventDefault();
@@ -27,9 +28,18 @@ const UmfrageErstellen = () => {
         }
     }
 
+    function addMatrix () {
+        let n = fragen.length;
+        let m = optionen.length;
+        for (let i = 0; i < n; i++) {
+            setMatrix(Matrix[i] = Array(m).fill(0))
+        }
+    }
+
     function submitUmfrage(e){
         e.preventDefault();
-        const obj = {name: umfrageName, fragen: fragen, optionen: optionen};
+        addMatrix();
+        const obj = { name: umfrageName, fragen: fragen, optionen: optionen, ergebnisse: Matrix};
         axios.post('http://localhost:4000/umfrage/create', obj)
             .then(res => {console.log(res.data); setFragen([]); setOptionen([])});
     }

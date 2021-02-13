@@ -1,53 +1,49 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import React, { Fragment, useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { PieChart, Pie, Cell } from 'recharts'
 
 const Ergebnisse = () => {
-    const [ergebnisse, setErgebnisse] = useState([]);
-    const [name, setName] = useState();
-    const [fragen, setFragen] = useState([]);
-    const [submitted, setSubmitted] = useState([]);
-    let show = false;
+    const { id } = useParams()
+    const [ergebnisse, setErgebnisse] = useState([])
+    const [UName, setUName] = useState('')
+    const [fragen, setFragen] = useState()
+    const [optionen, setOptionen] = useState([])
+    const [optionLength, setOptionLength] = useState()
+    const [antworten, setAntworten] = useState({})
 
-    const { id } = useParams();
+    let data = []
+    let show = false
+    
+    //console.log(ergebnisse)
+    //console.log(optionen)
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('http://localhost:4000/umfrage/list/' + id);
-            setErgebnisse(response.data.ergebnisse);
-            setName(response.data.name);
+            const response = await axios.get('http://localhost:4000/umfrage/list/' + id)
+            setErgebnisse(response.data.ergebnisse)
+            setUName(response.data.name)
+            setFragen(response.data.fragen)
+            setOptionen(response.data.optionen)
+            setAntworten()
         }
         fetchData();
     }, [])
 
-    //console.log('ergebnisse:', ergebnisse)
-    //console.log('Antworten ', submitted)
-
-    function Answers(){
-        let n = ergebnisse.length
-        for(let i = 0; i < n; i++) {
-            //console.log(ergebnisse[i])
-            for (let j = 0; j < 1; j++) {
-                console.log(ergebnisse[i][j])
-                }
-            }
-            
-        }
-    Answers()
-
-
-
-
-    const data = [{ name: 'Group A', value: 1 },{ name: 'Group B', value: 5 },{ name: 'Group C', value: 9 },];
+    function Frage1 () {
+        ergebnisse.forEach(element => {
+            console.log(element[0].option)
+        })
+    }
+    Frage1()
 
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
+    const x = cx + radius * Math.cos(-midAngle * RADIAN)
+    const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
     return (
         <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
@@ -58,7 +54,10 @@ const Ergebnisse = () => {
 
     return (
         <Fragment>
-        <p>{name}</p>
+        <h1>{UName}</h1>
+        <p>
+            
+        </p>
         {show && <PieChart width={400} height={400}>
         <Pie
           data={data}

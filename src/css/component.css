@@ -36,6 +36,7 @@ button:hover {
     position: fixed;
     left: 0;
     bottom: 0;
+    margin-left: 20rem;
 }
 
 .centered {

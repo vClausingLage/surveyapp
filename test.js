@@ -17,3 +17,18 @@ function count (nF, nO, arr) {
 }
 
 count(frLength, optLength, ergebnisse)
+
+let arr = Array(10).fill(0)
+let newArr = []
+
+let n = 30
+let m = 100
+
+function addMatrix () {
+    for (let i = 0; i < n; i++) {
+        newArr[i] = Array(m).fill(0)
+    }
+}
+
+addArr()
+console.log(newArr)

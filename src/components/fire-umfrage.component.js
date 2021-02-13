@@ -6,9 +6,11 @@ const FireUmfrage = (  ) => {
     const [fragen, setFragen] = useState([]);
     const [optionen, setOptionen] = useState([]);
     const [UName, setUName] = useState('');
-    const optionIndex = [];
+    const [optionIndex, setOptionIndex] = useState([]);
 
     let { id } = useParams();
+
+    console.log(optionIndex)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,6 +18,7 @@ const FireUmfrage = (  ) => {
         setFragen(response.data.fragen);
         setOptionen(response.data.optionen);
         setUName(response.data.name)
+        setOptionIndex(response.data.ergebnisse)
         }
         fetchData();
     },[]);
@@ -27,8 +30,9 @@ const FireUmfrage = (  ) => {
             
     }
 
-    const setInput = (element, index) => {
-        optionIndex[index] = element;
+    const setInput = (frindex, index) => {
+        
+        optionIndex[frindex][index] = (optionIndex[frindex][index] === 0 ? 1 : 0);
         console.log(optionIndex)
     }
 
@@ -48,7 +52,7 @@ const FireUmfrage = (  ) => {
                         type="radio"
                         name={frindex}
                         id={element}
-                        onChange={e => setInput({frage: frindex, option:index},frindex)}
+                        onChange={e => setInput(frindex, index)}
                         />
                     </td>)}
                 </tr>)}

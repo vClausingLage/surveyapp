@@ -1,5 +1,5 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import React, { Fragment } from 'react';
+import { PieChart, Pie, Cell } from 'recharts';
 
 let ergebnisse = [[1,1,2,0],[0,1,2,0],[1,0,2,2]];
 let frLength = ergebnisse[0].length;
