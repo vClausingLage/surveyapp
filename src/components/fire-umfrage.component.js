@@ -18,7 +18,7 @@ const FireUmfrage = (  ) => {
         setFragen(response.data.fragen);
         setOptionen(response.data.optionen);
         setUName(response.data.name)
-        setOptionIndex(response.data.ergebnisse)
+        setOptionIndex(response.data.ergebnisse[0])
         }
         fetchData();
     },[]);
@@ -31,9 +31,10 @@ const FireUmfrage = (  ) => {
     }
 
     const setInput = (frindex, index) => {
-        
+        for (let i =0; i < optionen.length; i++) {
+            optionIndex[frindex][i] = 0;
+        }
         optionIndex[frindex][index] = (optionIndex[frindex][index] === 0 ? 1 : 0);
-        console.log(optionIndex)
     }
 
     return (

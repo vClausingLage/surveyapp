@@ -4,40 +4,69 @@ import axios from 'axios'
 import { PieChart, Pie, Cell } from 'recharts'
 
 const Ergebnisse = () => {
-    const { id } = useParams()
     const [ergebnisse, setErgebnisse] = useState([])
     const [UName, setUName] = useState('')
-    const [fragen, setFragen] = useState()
     const [optionen, setOptionen] = useState([])
-    const [optionLength, setOptionLength] = useState()
-    const [antworten, setAntworten] = useState({})
-
-    let data = []
-    let show = false
-    
-    //console.log(ergebnisse)
-    //console.log(optionen)
+    const [fragen, setFragen] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [data, setData] = useState([])
+    const { id } = useParams()
+  
+    //console.log(data)
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('http://localhost:4000/umfrage/list/' + id)
             setErgebnisse(response.data.ergebnisse)
             setUName(response.data.name)
-            setFragen(response.data.fragen)
             setOptionen(response.data.optionen)
-            setAntworten()
+            setFragen(response.data.fragen)
+            setLoading(false)
+            createButtons()
         }
         fetchData();
     }, [])
 
-    function Frage1 () {
-        ergebnisse.forEach(element => {
-            console.log(element[0].option)
-        })
+    const createButtons = () => {
+      let n = fragen.length
+      for (let i = 0; i < n; i++) {
+        return (<button onClick={e => counter(n)}>Frage {n}</button>)
+      }
     }
-    Frage1()
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    function counter(index){
+      let count=[]
+      let list = []
+      let sum = []
+      let zaehler = 0
+      let antwort = []
+      ergebnisse.shift()
+      let n = optionen.length
+      let m = ergebnisse.length
+      //console.log('Optionen', n, 'Ergebnisse',m)
+      //console.log('Index',index)
+      for (let i = 0; i < m; i++) {
+          count = [...count, ergebnisse[i][index]]
+      }
+      //console.log('count',count)
+      for (let j = 0; j < n; j++) {
+        for (let k = 0; k < m; k++) {
+          zaehler += count[k][j]
+        }
+        sum = [...sum, zaehler]
+        zaehler = 0
+      }
+      //console.log(sum)
+      for (let z = 0; z < n; z++) {
+        antwort[z] = {name: `${fragen[z]}`, value: sum[z]}
+      }
+      setData(antwort)
+    }
+
+  
+   
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -54,11 +83,15 @@ const Ergebnisse = () => {
 
     return (
         <Fragment>
+          {createButtons}
+        {loading && <p className="centered">loading</p>}
+        {!loading && <div>
         <h1>{UName}</h1>
-        <p>
-            
-        </p>
-        {show && <PieChart width={400} height={400}>
+        {fragen.map((item, index) =>
+          <button key={item} onClick={e => counter(index)}>Frage {index}</button>  
+        )}
+        </div>}
+        <PieChart width={400} height={400}>
         <Pie
           data={data}
           cx={200}
@@ -73,7 +106,7 @@ const Ergebnisse = () => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        </PieChart>}
+        </PieChart>
         </Fragment>
 )}
 

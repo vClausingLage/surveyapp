@@ -1,34 +1,20 @@
-let ergebnisse = [[1,2,3,4],[5,6,7,8],[9,10,11,12]];
-let frLength = ergebnisse[0].length;
-let optLength = ergebnisse.length;
-let antworten = [];
-let list = [];
+const arr = [[100,200],[10,20],[1,2],[3,4]]
 
-function count (nF, nO, arr) {
-    for(let j = 0; j < nF; j++) {
-        for(let i = 0; i < nO; i++){
-            antworten = [...antworten, arr[i][j]];
-        }
-    }
-    while(antworten.length>0){
-        list = [...list, antworten.splice(0,3)]
-    }
-    console.log('fertig: ', list)
-}
+let sum = []
+let zaehler = 0
 
-count(frLength, optLength, ergebnisse)
+let n = 2
+let m = 4
 
-let arr = Array(10).fill(0)
-let newArr = []
+for (let k = 0; k < n; k++) {       
+    for (let l = 0; l < m; l++) {
+    zaehler += arr[l][k]
+    console.log(zaehler)
+  }
+  console.log(zaehler)
+  
+  sum = [...sum, zaehler]
+  zaehler = 0
+  }
 
-let n = 30
-let m = 100
-
-function addMatrix () {
-    for (let i = 0; i < n; i++) {
-        newArr[i] = Array(m).fill(0)
-    }
-}
-
-addArr()
-console.log(newArr)
+  console.log(sum)
