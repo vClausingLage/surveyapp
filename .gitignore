@@ -1,6 +1,5 @@
 node_modules
 server/config/dev.js
-build
 schulapp-vorlagen
 .eslintcache
 users.md
