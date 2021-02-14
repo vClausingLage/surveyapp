@@ -2,12 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const UmfrageRoute = require('./routes/umfrage-route');
-var path = require('path');
+const path = require('path');
+require('dotenv').config({ path: 'ENV_FILENAME' });
 
 const PORT = process.env.PORT || 4000;
-const keys = require('./config/keys');
 
-mongoose.connect(keys.mongoURI, { 
+mongoose.connect(process.env.MONGODB_URI, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     useCreateIndex: true,
