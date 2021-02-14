@@ -40,7 +40,7 @@ const UmfrageErstellen = () => {
         e.preventDefault();
         addMatrix();
         const obj = { name: umfrageName, fragen: fragen, optionen: optionen, ergebnisse: [Matrix]};
-        axios.post('http://localhost:4000/umfrage/create', obj)
+        axios.post('/umfrage/create', obj)
             .then(res => {console.log(res.data); setFragen([]); setOptionen([])});
     }
 

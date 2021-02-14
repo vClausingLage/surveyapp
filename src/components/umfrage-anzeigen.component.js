@@ -16,7 +16,7 @@ const DatenEingeben = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-        const response = await axios.get('http://localhost:4000/umfrage/list/' + id);
+        const response = await axios.get('/umfrage/list/' + id);
         setFragen(response.data.fragen);
         setOptionen(response.data.optionen);
         }

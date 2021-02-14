@@ -14,7 +14,7 @@ const FireUmfrage = (  ) => {
 
     useEffect(() => {
         const fetchData = async () => {
-        const response = await axios.get('http://localhost:4000/umfrage/list/' + id);
+        const response = await axios.get('/umfrage/list/' + id);
         setFragen(response.data.fragen);
         setOptionen(response.data.optionen);
         setUName(response.data.name)
@@ -26,7 +26,7 @@ const FireUmfrage = (  ) => {
     function submitAll(e){
         e.preventDefault();
         const obj = optionIndex;
-        axios.post('http://localhost:4000/umfrage/fire/' + id, obj)
+        axios.post('/umfrage/fire/' + id, obj)
             
     }
 

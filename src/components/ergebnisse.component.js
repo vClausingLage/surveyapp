@@ -16,7 +16,7 @@ const Ergebnisse = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('http://localhost:4000/umfrage/list/' + id)
+            const response = await axios.get('/umfrage/list/' + id)
             setErgebnisse(response.data.ergebnisse)
             setUName(response.data.name)
             setOptionen(response.data.optionen)

@@ -10,14 +10,14 @@ const UmfragenList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-        const response = await axios.get('http://localhost:4000/umfrage/list');
+        const response = await axios.get('/umfrage/list');
         setUmfragen(response.data);
         }
         fetchData();
     },[change]);
 
     function deleteUmfrage(id) {
-        axios.get('http://localhost:4000/umfrage/delete/' + id)
+        axios.get('/umfrage/delete/' + id)
             .catch(err => console.log(err));
             const tmp = umfragen.filter( u => u.umfragen !== umfragen );
             setUmfragen(tmp);
