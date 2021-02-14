@@ -1,6 +1,5 @@
 node_modules
+surveyapp-dev
 config/dev.js
-schulapp-vorlagen
-.eslintcache
-users.md
-develop
+.gitignore
+
