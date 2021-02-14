@@ -52,6 +52,7 @@ const UmfrageErstellen = () => {
     
     return (
         <Fragment>
+            <div className="" style={{marginBottom: '6rem'}}>
             <h1>Umfrage erstellen</h1>
             <div className="grid">
             <div className="grid-item">
@@ -110,7 +111,8 @@ const UmfrageErstellen = () => {
             </div>
             </div>
             </div>
-            <button className="button" onClick={submitUmfrage}>erstellen</button>
+            </div>
+        <button className="submitbutton" onClick={submitUmfrage}>erstellen</button>
         </Fragment>
     )
 }

@@ -29,6 +29,7 @@ const DatenEingeben = () => {
 
     return (
         <Fragment>
+        <div className="center">
         <h3>überprüfen Sie Ihren Umfragebogen</h3>
         <h1>{fragen.name}</h1>
         <p>{fragen._id}</p>
@@ -40,7 +41,8 @@ const DatenEingeben = () => {
                 </tbody>
                 </table>
             </div>
-        <button onClick={e => publish(id)} style={{margin: 'auto', marginTop: '2rem'}}>Umfrage veröffentlichen</button>
+        </div>
+        <button onClick={e => publish(id)} className="submitbutton">Umfrage veröffentlichen</button>
         
         </Fragment>
     )

@@ -12,7 +12,7 @@ const Ergebnisse = () => {
     const [data, setData] = useState([])
     const { id } = useParams()
   
-    //console.log(data)
+    //console.log(optionen)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,12 +34,12 @@ const Ergebnisse = () => {
       let antwort = []
       let n = optionen.length
       let m = ergebnisse.length
-      console.log('Optionen', n, 'Ergebnisse',m)
+      //console.log('Optionen', n, 'Ergebnisse',m)
       //console.log('Index',index)
       for (let i = 0; i < m; i++) {
           count = [...count, ergebnisse[i][index]]
       }
-      console.log('count',count)
+      //console.log('count',count)
       for (let j = 0; j < n; j++) {
         for (let k = 0; k < m; k++) {
           zaehler += count[k][j]
@@ -54,35 +54,31 @@ const Ergebnisse = () => {
       setData(antwort)
     }
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
+    const COLORS = ['#003f5c', '#2f4b7c', '#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600']
 
     const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, index }) => {
+    const radius = 25 + innerRadius + (outerRadius - innerRadius)
     const x = cx + radius * Math.cos(-midAngle * RADIAN)
     const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
     return (
-        <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-        {`${(percent * 100).toFixed(0)}%`}
-        </text>
+      <text
+      x={x}
+      y={y}
+      fill="#34088e"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {optionen[index]} ({data[index].value})
+    </text>
     );
     };
-
-    function CustomTooltip({ payload, label, active }) {
-      if (active) {
-        return (
-          <div className="custom-tooltip">
-            <p className="label">{`${label} : ${payload[0].value}`}</p>
-          </div>
-        );
-      }
-      return null;
-    }
 
     return (
         <Fragment>
         {loading && <p className="centered">loading</p>}
+        <div className="center">
         <div className="grid">
         <div className="grid-item">
         {!loading && <div>
@@ -96,11 +92,11 @@ const Ergebnisse = () => {
         <PieChart width={400} height={400}>
         <Pie
           data={data}
-          cx={200}
-          cy={200}
+          cx="50%"
+          cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={100}
           fill="#8884d8"
           dataKey="value"
         >
@@ -108,8 +104,8 @@ const Ergebnisse = () => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} content={<CustomTooltip  />}/>
         </PieChart>
+        </div>
         </div>
         </div>
         </Fragment>

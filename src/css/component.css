@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+nav {
+    margin-top: 1.5rem;
+}
+
 button {
     padding:.3rem;
     border:none;
@@ -17,7 +21,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background-color: #e2f1f8;
+    background-color: #7d8a8f;
 }
 
 .navButton {
@@ -34,9 +38,8 @@ button:hover {
 .panel {
     color: gray;
     position: fixed;
-    left: 0;
+    left: 10;
     bottom: 0;
-    margin-left: 20rem;
 }
 
 .centered {
@@ -98,4 +101,20 @@ table > tbody > tr > td:nth-child(1) {
     color:  #940d55;
     background-color: white;
     border: solid 1px #940d55;
+}
+
+.center {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+}
+
+.submitbutton {
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    margin: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: x-large;
 }

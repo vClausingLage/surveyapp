@@ -27,14 +27,20 @@ const UmfragenList = () => {
 
     return (
         <Fragment>
-        <h1>Ihre Umfragen</h1>
+        <div className="center">
+            <h1>Ihre Umfragen</h1>
             <table>
             <tbody>
             {umfragen.map(umfrage => (
-                    <tr key={umfragen.indexOf(umfrage)}><td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td><td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash"><FontAwesomeIcon icon={faTrash} /></button></td><td><Link className="navButton" to={'/ergebnisse/' + umfrage._id}>Ergebnisse</Link></td></tr>
+                    <tr key={umfragen.indexOf(umfrage)}>
+                        <td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td>
+                        <td><Link className="navButton" to={'/ergebnisse/' + umfrage._id}>Ergebnisse</Link></td>
+                        <td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash"><FontAwesomeIcon icon={faTrash} /></button></td>
+                    </tr>
             ))}
             </tbody>
             </table>
+        </div>
         </Fragment>
     )
 }

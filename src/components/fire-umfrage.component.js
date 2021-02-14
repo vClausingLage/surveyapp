@@ -39,9 +39,9 @@ const FireUmfrage = (  ) => {
 
     return (
         <Fragment>
+        <div className="center">
         <h3>bitte füllen Sie den Fragebogen aus und senden Sie ihn danach ab</h3>
         <h1>{UName}</h1>
-        <p>{id}</p>
                 <div className="container">
                 <table>
                 <tbody>
@@ -61,7 +61,8 @@ const FireUmfrage = (  ) => {
                 </tbody>
                 </table>
             </div>
-        <button onClick={e => submitAll(e)} style={{margin: 'auto', marginTop: '2rem'}}>absenden</button>
+        </div>
+        <button onClick={e => submitAll(e)} className="submitbutton">absenden</button>
         </Fragment>
     )
 }
