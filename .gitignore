@@ -1,5 +1,5 @@
 node_modules
 surveyapp-dev
-config/dev.js
+config/key.js
 .gitignore
 
