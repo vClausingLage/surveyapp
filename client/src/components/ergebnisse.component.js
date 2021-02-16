@@ -23,6 +23,7 @@ const Ergebnisse = () => {
             setFragen(response.data.fragen)
             setLoading(false)
             ergebnisse.splice(0)
+            counter(0)
         }
         fetchData();
     }, [])
@@ -80,15 +81,13 @@ const Ergebnisse = () => {
         {loading && <p className="centered">loading</p>}
         <div className="center">
         <div className="grid">
-        <div className="grid-item">
-        {!loading && <div>
+        {!loading && <div className="grid-item">
         <h2>{UName}</h2>
         <h3>klicken Sie auf die Frage, um die Ergebnisse anzuzeigen</h3>
         {fragen.map((item, index) =>
           <p key={item}><button onClick={e => counter(index)}>{`${fragen[index]}`}</button></p>
         )}
         </div>}
-        </div>
         <div className="grid-item">
         <PieChart width={500} height={500}>
         <Pie

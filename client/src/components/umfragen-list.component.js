@@ -32,7 +32,8 @@ const UmfragenList = () => {
             <tbody>
             {umfragen.map(umfrage => (
                     <tr key={umfragen.indexOf(umfrage)}>
-                        <td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>{umfrage.name}</Link></td>
+                        <td>{umfrage.name}: </td>
+                        <td><Link className="navButton" to={'/umfrage/list/' + umfrage._id}>Umfrage betrachten</Link></td>
                         <td><Link className="navButton" to={'/ergebnisse/' + umfrage._id}>Ergebnisse</Link></td>
                         <td><button onClick={e => deleteUmfrage(umfrage._id)} className="trash icon"><DeleteIcon fontSize="small" /></button></td>
                     </tr>

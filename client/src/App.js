@@ -13,18 +13,18 @@ const App = () => {
     return (
       <Router>
       <div className="container">
-        <nav>
+        <nav className="flex-cont">
           <Link to={'/'} className="navButton">Home</Link>
           <Link to={'/umfrage/erstellen'} className="navButton" >neue Umfrage erstellen</Link>
           <Link to={'/umfragen/list'} className="navButton">Ihre Umfragen</Link>
         </nav>
       <Switch>
           <Route exact path='/' component={ Index } />
-          <Route exact path='/umfrage/erstellen' component={ UmfrageErstellen } />
-          <Route exact path='/umfrage/list/:id' component={ UmfrageAnzeigen } />
-          <Route exact path='/umfragen/list' component={ UmfragenList } />
+          <Route path='/umfrage/erstellen' component={ UmfrageErstellen } />
+          <Route path='/umfrage/list/:id' component={ UmfrageAnzeigen } />
+          <Route path='/umfragen/list' component={ UmfragenList } />
           <Route path='/umfragen/fire/:id' component={ FireUmfrage } />
-          <Route exact path='/ergebnisse/:id' component={ Ergebnisse } />
+          <Route path='/ergebnisse/:id' component={ Ergebnisse } />
       </Switch>
       </div>
     <Footer />

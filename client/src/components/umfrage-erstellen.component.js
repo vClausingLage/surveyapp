@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const UmfrageErstellen = () => {
-    const [umfrageName, setUmfrageName] = useState('');
-    const [inputFrage, setInputFrage] = useState('');
-    const [inputOption, setInputOption] = useState('');
+    const [umfrageName, setUmfrageName] = useState('Titel');
+    const [inputFrage, setInputFrage] = useState('Frage');
+    const [inputOption, setInputOption] = useState('Antwort');
     const [optionen, setOptionen] = useState([]);
     const [fragen, setFragen] = useState([]);
     const [Matrix, setMatrix] = useState([]);
@@ -72,33 +72,35 @@ const UmfrageErstellen = () => {
                     type="text"
                     name="umfrageName"
                     onChange={e => setUmfrageName(e.target.value)}
-                    value={umfrageName}>
+                    value={umfrageName}
+                    onFocus={e => setUmfrageName(e.target.value='')}>
                     </input>
                 </form>
             </div>
             <div className="container">
-                <p>Skalierung festelegen:</p>
                 <form onSubmit={submitOption}>
-                    <label>Optionen: </label>
+                    <label>Geben Sie die Antwortoptionen ein: </label>
                     <input
                     className="input"
                     type="text"
                     name="inputOption"
                     onChange={e => setInputOption(e.target.value)}
-                    value={inputOption}>
+                    value={inputOption}
+                    onFocus={e => setInputOption(e.target.value='')}>
                     </input>
                 </form>
             </div>
             <div className="container">
                 <p>Fragen erstellen:</p>
                 <form onSubmit={submitFrage}>
-                    <label>Geben Sie Ihre Items ein: </label>
+                    <label>Geben Sie Ihre Frage ein: </label>
                     <input
                     className="input"
                     type="text"
                     name="inputFrage"
                     onChange={e => setInputFrage(e.target.value)}
-                    value={inputFrage}>
+                    value={inputFrage}
+                    onFocus={e => setInputFrage(e.target.value='')}>
                     </input>
                 </form>
             </div>
