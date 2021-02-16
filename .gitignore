@@ -1,5 +1,4 @@
 node_modules
-surveyapp-dev
 config/key.js
-.gitignore
+client/build
 
