@@ -34,6 +34,7 @@ app.use(
           'https://fonts.googleapis.com',
           'https://surveyapp-cll.herokuapp.com',
         ],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         baseUri: ["'self'"],
       },
     })
