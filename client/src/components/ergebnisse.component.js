@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
 const Ergebnisse = () => {
     const [ergebnisse, setErgebnisse] = useState([])
@@ -12,8 +12,6 @@ const Ergebnisse = () => {
     const [data, setData] = useState([])
     const { id } = useParams()
   
-    //console.log(optionen)
-
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('/api/list/' + id)
@@ -80,15 +78,20 @@ const Ergebnisse = () => {
         <Fragment>
         {loading && <p className="centered">loading</p>}
         <div className="center">
-        <div className="grid">
-        {!loading && <div className="grid-item">
+        {!loading &&
+        <div>
         <h2>{UName}</h2>
         <h3>klicken Sie auf die Frage, um die Ergebnisse anzuzeigen</h3>
+        <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '90%', justifyContent: 'center'}}>
         {fragen.map((item, index) =>
-          <p key={item}><button onClick={e => counter(index)}>{`${fragen[index]}`}</button></p>
+          <p style={{margin: '.3rem'}} key={item}>
+          <button onClick={e => counter(index)}>{`${fragen[index]}`}</button>
+          </p>
         )}
-        </div>}
-        <div className="grid-item">
+        </div>
+        </div>
+        }
+        <ResponsiveContainer width="95%" height={500}>
         <PieChart width={500} height={500}>
         <Pie
           data={data}
@@ -105,8 +108,7 @@ const Ergebnisse = () => {
           ))}
         </Pie>
         </PieChart>
-        </div>
-        </div>
+        </ResponsiveContainer>
         </div>
         </Fragment>
 )}

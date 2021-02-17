@@ -56,10 +56,18 @@ const UmfrageErstellen = () => {
             <tr><th>Frage</th>{optionen.map((item) => <th key={optionen.indexOf(item)}>{item}</th>)}</tr>
         )
     }
+
+    const titleBlur = (e) => {
+        if (umfrageName.length < 1) {
+            setUmfrageName(e.target.value='Title');
+        } else {
+            setUmfrageName(e.target.value='');
+        }
+    }
     
     return (
         <Fragment>
-            <div className="" style={{marginBottom: '6rem'}}>
+            <div>
             <h1>Umfrage erstellen</h1>
             <div className="grid">
             <div className="grid-item">
@@ -73,7 +81,9 @@ const UmfrageErstellen = () => {
                     name="umfrageName"
                     onChange={e => setUmfrageName(e.target.value)}
                     value={umfrageName}
-                    onFocus={e => setUmfrageName(e.target.value='')}>
+                    onFocus={e => setUmfrageName(e.target.value='')}
+                    onBlur={e => titleBlur(e)}
+                    >
                     </input>
                 </form>
             </div>
@@ -86,7 +96,9 @@ const UmfrageErstellen = () => {
                     name="inputOption"
                     onChange={e => setInputOption(e.target.value)}
                     value={inputOption}
-                    onFocus={e => setInputOption(e.target.value='')}>
+                    onFocus={e => setInputOption(e.target.value='')}
+                    onBlur={e => setInputOption(e.target.value='Antwort')}
+                    >
                     </input>
                 </form>
             </div>
@@ -100,7 +112,9 @@ const UmfrageErstellen = () => {
                     name="inputFrage"
                     onChange={e => setInputFrage(e.target.value)}
                     value={inputFrage}
-                    onFocus={e => setInputFrage(e.target.value='')}>
+                    onFocus={e => setInputFrage(e.target.value='')}
+                    onBlur={e => setInputFrage(e.target.value='Frage')}
+                    >
                     </input>
                 </form>
             </div>

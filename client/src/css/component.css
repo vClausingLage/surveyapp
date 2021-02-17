@@ -8,7 +8,7 @@
 }
 
 h2, h3 {
-    text-decoration: underline 2px plum;
+    color: gray;
 }
 
 nav {
@@ -84,6 +84,7 @@ button:hover {
     border-bottom: 2px solid lightgray;
     margin: 10px 0 10px;
     width: 100%;
+    color: gray;
 }
 .input:hover, input:focus {
     border-bottom: 2px solid plum;
@@ -124,6 +125,8 @@ table > tbody > tr > td:nth-child(1) {
     align-items: center;
     text-align: center;
     min-height: 40vh;
+    flex-wrap: wrap;
+    margin: auto;
 }
 
 .submitbutton {
