@@ -59,7 +59,7 @@ const UmfrageErstellen = () => {
 
     const titleBlur = (e) => {
         if (umfrageName.length < 1) {
-            setUmfrageName(e.target.value='Title');
+            setUmfrageName(e.target.value='Titel');
         } else {
             setUmfrageName(e.target.value='');
         }

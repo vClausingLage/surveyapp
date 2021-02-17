@@ -130,8 +130,6 @@ table > tbody > tr > td:nth-child(1) {
 }
 
 .submitbutton {
-    position: fixed;
-    bottom: 0;
     width: 90%;
     margin: 2.5rem;
     padding-top: 1rem;
