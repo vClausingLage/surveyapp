@@ -46,10 +46,16 @@ app.use('/api', UmfrageRoute);
 // BUILD
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static("client/build"));
-app.get('*', (req, res) => {
+  app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
+}
+
+// STATIC COMMENT OUT FOR PROD
+app.use(express.static("client/build"));
+  app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
-}
 
 app.listen(PORT, function(){
     console.log('server running on Port', PORT);
